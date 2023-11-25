@@ -7,6 +7,7 @@ from aiogram.filters import Command
 from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram import types
+from config import token
 
 rasm1 = "https://www.pexels.com/photo/landscape-photography-of-snowy-mountain-1366919/"
 rasm2 = "https://www.pexels.com/photo/close-up-photo-of-green-fern-leaf-1226302/"
@@ -18,8 +19,7 @@ imagelist = [rasm1, rasm2, rasm3, rasm4, rasm5, rasm6]
 
 logging.basicConfig(level=logging.INFO)
 
-myToken = '6213782553:AAFKsIt0dCXYNaUYbC3W8jFwEfWJ56ChEd4'
-
+myToken = token
 bot = Bot(token=myToken, parse_mode="HTML")
 dp = Dispatcher()
 
@@ -66,7 +66,6 @@ async def location(message: Message):
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=key, resize_keyboard=True)
     await message.answer("location or contact", reply_markup=keyboard)
-
 
 
 async def main():
