@@ -8,6 +8,7 @@ from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKe
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram import types
 from config import token
+from Keyboard import key
 
 rasm1 = "https://www.pexels.com/photo/landscape-photography-of-snowy-mountain-1366919/"
 rasm2 = "https://www.pexels.com/photo/close-up-photo-of-green-fern-leaf-1226302/"
@@ -66,6 +67,12 @@ async def location(message: Message):
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=key, resize_keyboard=True)
     await message.answer("location or contact", reply_markup=keyboard)
+
+
+@dp.message(Command("shop"))
+async def shop(message: Message):
+    await message.answer_photo(photo="https://images.app.goo.gl/QeCLLpW4WpN1NVnj6", caption="shop link",
+                               reply_markup=key.as_markup())
 
 
 async def main():
