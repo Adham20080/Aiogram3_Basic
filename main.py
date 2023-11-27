@@ -74,6 +74,8 @@ async def shop(message: Message):
     await message.answer_photo(photo="https://images.app.goo.gl/QeCLLpW4WpN1NVnj6", caption="shop link",
                                reply_markup=key.as_markup())
 
+@dp.message(Command("album"))
+async def album(message: Message):
 
 async def main():
     await dp.start_polling(bot)
