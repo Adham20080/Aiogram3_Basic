@@ -76,6 +76,7 @@ async def shop(message: Message):
 
 @dp.message(Command("album"))
 async def album(message: Message):
+    await message.answer_media_group()
 
 async def main():
     await dp.start_polling(bot)
