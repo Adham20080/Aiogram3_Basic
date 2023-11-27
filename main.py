@@ -4,11 +4,11 @@ import random
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command
-from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram.types import Message
 from aiogram import types
 from config import token
 from Keyboard import key
+from Photo import album_builder
 
 rasm1 = "https://www.pexels.com/photo/landscape-photography-of-snowy-mountain-1366919/"
 rasm2 = "https://www.pexels.com/photo/close-up-photo-of-green-fern-leaf-1226302/"
@@ -74,9 +74,11 @@ async def shop(message: Message):
     await message.answer_photo(photo="https://images.app.goo.gl/QeCLLpW4WpN1NVnj6", caption="shop link",
                                reply_markup=key.as_markup())
 
+
 @dp.message(Command("album"))
 async def album(message: Message):
-    await message.answer_media_group()
+    await message.answer_media_group(media=album_builder.build())
+
 
 async def main():
     await dp.start_polling(bot)
